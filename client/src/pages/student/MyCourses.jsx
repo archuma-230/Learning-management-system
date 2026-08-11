@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Button, ProgressBar } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import api from '../../services/api';
+import api, { API_URL } from '../../services/api';
 
 const MyCourses = () => {
   const [enrollments, setEnrollments] = useState([]);
@@ -28,7 +28,7 @@ const MyCourses = () => {
           <Col md={4} key={enr._id} className="mb-4">
             <Card className="h-100 shadow-sm border-0 rounded-3">
               {enr.course?.thumbnail && (
-                <Card.Img variant="top" src={enr.course.thumbnail.startsWith('http') ? enr.course.thumbnail : `http://localhost:5000${enr.course.thumbnail}`} style={{ height: '200px', objectFit: 'cover' }} />
+                <Card.Img variant="top" src={enr.course.thumbnail.startsWith('http') ? enr.course.thumbnail : `${API_URL}${enr.course.thumbnail}`} style={{ height: '200px', objectFit: 'cover' }} />
               )}
               <Card.Body className="d-flex flex-column">
                 <Card.Title className="text-primary">{enr.course?.title}</Card.Title>

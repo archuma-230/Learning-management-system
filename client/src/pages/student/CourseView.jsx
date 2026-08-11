@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, ListGroup, Button, Badge, Form } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import api from '../../services/api';
+import api, { API_URL } from '../../services/api';
 
 const getEmbedUrl = (url) => {
   if (!url) return '';
@@ -96,7 +96,7 @@ const CourseView = () => {
                           setVideoEnded(true);
                         }
                       }}
-                      src={`http://localhost:5000${currentLecture.videoUrl}`} 
+                      src={`${API_URL}${currentLecture.videoUrl}`} 
                     />
                   ) : (
                     // IFrames don't easily fire onEnded across domains without specific API setup. For this demo, we'll auto-enable if it's an iframe to avoid being stuck.

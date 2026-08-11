@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://learning-management-system-hsqp.onrender.com';
+export const API_URL = 'https://learning-management-system-hsqp.onrender.com';
 
 const api = axios.create({
   baseURL: API_URL

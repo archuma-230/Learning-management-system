@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Container, Form, Button, Card, Alert } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../../services/api';
 import { AuthContext } from '../../context/AuthContext';
 
 const Login = () => {
@@ -14,7 +14,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const res = await api.post('/api/auth/login', { email, password });
       login(res.data, res.data.token);
       if (res.data.role === 'tutor') {
         navigate('/tutor/dashboard');

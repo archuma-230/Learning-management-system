@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import api from '../../services/api';
+import api, { API_URL } from '../../services/api';
 
 const StudentDashboard = () => {
   const [courses, setCourses] = useState([]);
@@ -61,7 +61,7 @@ const StudentDashboard = () => {
           <Col md={4} key={course._id} className="mb-4">
             <Card className="h-100 shadow-sm border-0 rounded-3 card-hover">
               {course.thumbnail && (
-                <Card.Img variant="top" src={course.thumbnail.startsWith('http') ? course.thumbnail : `http://localhost:5000${course.thumbnail}`} style={{ height: '200px', objectFit: 'cover' }} />
+                <Card.Img variant="top" src={course.thumbnail.startsWith('http') ? course.thumbnail : `${API_URL}${course.thumbnail}`} style={{ height: '200px', objectFit: 'cover' }} />
               )}
               <Card.Body className="d-flex flex-column">
                 <Card.Title className="text-primary">{course.title}</Card.Title>
