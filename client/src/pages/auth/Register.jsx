@@ -16,7 +16,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await api.post('/api/auth/register', { name, email, password, role });
+      const res = await api.post('/auth/register', { name, email, password, role });
       login(res.data, res.data.token);
       if (res.data.role === 'tutor') {
         navigate('/tutor/dashboard');
